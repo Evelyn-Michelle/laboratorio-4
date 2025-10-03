@@ -4,15 +4,26 @@ using namespace std;
 int main(){
     int usuario = 0001;
     int opcion;
+    int intentos = 0;
 float numero1, numero2;
+
 cout<<"------CALCULADORAS------"<<endl;
 cout<<"ingrese su numero de usuario, solo tiene 3 intentos:"<<endl;
 cin>>usuario;
-if(usuario!=0001){
-    cout<<"usuario incorrecto, intente de nuevo:"<<endl;
-}return 0;
-}
 
+while(usuario!=0001 && intentos<2){
+    intentos++;
+    cout<<"usuario incorrecto, le quedan "<<3-intentos<<" intentos"<<endl;
+    cout<<"ingrese su numero de usuario:"<<endl;
+    cin>>usuario;
+if(intentos==2 && usuario!=0001){
+    cout<<"numero de usuario bloqueado"<<endl;
+    return 0;
+} else if(usuario==0001){
+    cout<<"usuario correcto, bienvenido"<<endl;
+}
+}
+do{ 
 
 cout<<"ingrese el numero de opcion que desea realizar:"<<endl;
 cout<<"1.suma"<<endl;
@@ -27,7 +38,7 @@ switch(opcion){
     cout<<"ingrese el segundo numero:"<<endl;
     cin>>numero2;
     cout<<"el resultado de la suma es:"<<numero1+numero2<<endl;
-    break;
+    break; 
     case 2: cout<<"ingrese el primer numero:"<<endl; 
     cin>>numero1;    
     cout<<"ingrese el segundo numero:"<<endl;
@@ -53,9 +64,12 @@ switch(opcion){
         }
         break;
         case 5 : cout<<"saliendo..."; 
+        break;
+    default: cout<<"opcion no valida, intente de nuevo"<<endl;
+    
 
 
 }
-
+}while(opcion!=5);
     return 0;
 }
